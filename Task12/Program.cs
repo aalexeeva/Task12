@@ -62,22 +62,6 @@ namespace Task12
             return number;
         }
 
-        public static bool Exit() // выход из программы
-        {
-            WriteLine("\nЖелаете начать сначала или нет? \nВведите да или нет");
-            var word = Convert.ToString(ReadLine()); // ответ пользователя
-            Clear();
-            if (word == "да" || word == "Да" || word == "ДА")
-            {
-                Clear();
-                return false;
-            }
-            Clear();
-            WriteLine("Вы ввели 'нет' или что-то непонятное. Нажмите любую клавишу, чтобы выйти из программы.");
-            ReadKey();
-            return true;
-        }
-
         public static int PrintMenu()
         {
             WriteLine("Выберите вариант сортировки:");
