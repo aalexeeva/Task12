@@ -83,13 +83,14 @@ namespace Task12
             WriteLine("Выберите вариант сортировки:");
             WriteLine("1. Сортировка слиянием");
             WriteLine("2. Сортировка подсчетом");
-            WriteLine("3. Выход");
+            WriteLine("3. Начать заново");
+            WriteLine("4. Выход");
             return Input(true);
         }
 
         static void Main(string[] args)
         {
-            bool okay;
+            bool okay = false;
             do
             {
                 WriteLine("Введите размер первого (упорядоченного по возрастанию) массива:");
@@ -122,46 +123,53 @@ namespace Task12
                 }
 
                 int n, f; // переменные для пересылок и сравнений
-                
-                var userAnswer = PrintMenu();
-                switch (userAnswer)
+
+                bool ok = false;
+                do
                 {
-                    case 1:
-                        WriteLine("Сортировка первого массива");
-                        first = MergeSort.Sort(first, 0, first.Length - 1, out n, out f);
-                        WriteLine(string.Join(" ", first));
-                        WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
-                        WriteLine("Сортировка второго массива");
-                        second = MergeSort.Sort(second, 0, second.Length - 1, out n, out f);
-                        WriteLine(string.Join(" ", second));
-                        WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
-                        WriteLine("Сортировка третьего массива");
-                        third = MergeSort.Sort(third, 0, third.Length - 1, out n, out f);
-                        WriteLine(string.Join(" ", third));
-                        WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
-                        break;
-                    case 2:
-                        WriteLine("Сортировка первого массива");
-                        var newarr = CountingSort.Sort(first, first[first.Length - 1], first[0]);
-                        foreach (var t in newarr) Write(t + " ");
-                        WriteLine("\nСортировка второго массива");
-                        newarr = CountingSort.Sort(second, second[0], second[second.Length - 1]);
-                        foreach (var t in newarr) Write(t + " ");
-                        WriteLine("\nСортировка третьего массива");
-                        int max = third[0], min = third[0];
-                        for (var i = 1; i < third.Length; i++)
-                        {
-                            if (third[i] > max) max = third[i];
-                            if (third[i] < min) min = third[i];
-                        }
-                        newarr = CountingSort.Sort(third, max, min);
-                        foreach (var t in newarr) Write(t + " ");
-                        break;
-                    case 3:
-                        Environment.Exit(0);
-                        break;
-                }
-                okay = Exit();
+                var userAnswer = PrintMenu();
+                    switch (userAnswer)
+                    {
+                        case 1:
+                            WriteLine("Сортировка первого массива");
+                            first = MergeSort.Sort(first, 0, first.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", first));
+                            WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
+                            WriteLine("Сортировка второго массива");
+                            second = MergeSort.Sort(second, 0, second.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", second));
+                            WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
+                            WriteLine("Сортировка третьего массива");
+                            third = MergeSort.Sort(third, 0, third.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", third));
+                            WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
+                            break;
+                        case 2:
+                            WriteLine("Сортировка первого массива");
+                            var newarr = CountingSort.Sort(first, first[first.Length - 1], first[0]);
+                            foreach (var t in newarr) Write(t + " ");
+                            WriteLine("\nСортировка второго массива");
+                            newarr = CountingSort.Sort(second, second[0], second[second.Length - 1]);
+                            foreach (var t in newarr) Write(t + " ");
+                            WriteLine("\nСортировка третьего массива");
+                            int max = third[0], min = third[0];
+                            for (var i = 1; i < third.Length; i++)
+                            {
+                                if (third[i] > max) max = third[i];
+                                if (third[i] < min) min = third[i];
+                            }
+                            newarr = CountingSort.Sort(third, max, min);
+                            foreach (var t in newarr) Write(t + " ");
+                            WriteLine();
+                            break;
+                        case 3:
+                            Clear();
+                            break;
+                        case 4:
+                            Environment.Exit(0);
+                            break;
+                    }
+                } while (!ok);
             } while (!okay);
         }
     }
