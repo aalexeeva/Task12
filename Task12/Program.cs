@@ -123,6 +123,7 @@ namespace Task12
                 }
                 int n, f; // переменные для пересылок и сравнений
                 bool ok = false;
+                int[] newarr; // отсортированный массив 
                 do
                 {
                 var userAnswer = PrintMenu();
@@ -130,21 +131,22 @@ namespace Task12
                     {
                         case 1:
                             WriteLine("Сортировка первого массива");
-                            first = Merge.Sort(first, 0, first.Length - 1, out n, out f);
-                            WriteLine(string.Join(" ", first));
+                            newarr = Merge.Sort(first, 0, first.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", newarr));
                             WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
                             WriteLine("Сортировка второго массива");
-                            second = Merge.Sort(second, 0, second.Length - 1, out n, out f);
-                            WriteLine(string.Join(" ", second));
+                            newarr = Merge.Sort(second, 0, second.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", newarr));
                             WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
                             WriteLine("Сортировка третьего массива");
-                            third = Merge.Sort(third, 0, third.Length - 1, out n, out f);
-                            WriteLine(string.Join(" ", third));
+                            newarr = Merge.Sort(third, 0, third.Length - 1, out n, out f);
+                            WriteLine(string.Join(" ", newarr));
                             WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
+                            GC.Collect();
                             break;
                         case 2:
                             WriteLine("Сортировка первого массива");
-                            var newarr = Counting.Sort(first, first[first.Length - 1], first[0]);
+                            newarr = Counting.Sort(first, first[first.Length - 1], first[0]);
                             foreach (var t in newarr) Write(t + " ");
                             WriteLine("\nСортировка второго массива");
                             newarr = Counting.Sort(second, second[0], second[second.Length - 1]);
@@ -159,6 +161,7 @@ namespace Task12
                             newarr = Counting.Sort(third, max, min);
                             foreach (var t in newarr) Write(t + " ");
                             WriteLine();
+                            GC.Collect();
                             break;
                         case 3:
                             Clear();
