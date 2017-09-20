@@ -92,8 +92,6 @@ namespace Task12
             bool okay;
             do
             {
-                #region comment
-                /*
                 WriteLine("Введите размер первого (упорядоченного по возрастанию) массива:");
                 var length = Input(false);
                 var first = new int[length];
@@ -122,27 +120,23 @@ namespace Task12
                     WriteLine("Введите {0} элемент массива", i + 1);
                     third[i] = Input(false);
                 }
-                */
-                #endregion
 
-                var first = new[] {1, 2, 3, 4, 5};
-                var second = new[] {5, 4, 3, 2, 1};
-                var third = new[] {7, 2, 6, 3, 4, 2, 6, -1};
                 int n, f; // переменные для пересылок и сравнений
+                
                 var userAnswer = PrintMenu();
                 switch (userAnswer)
                 {
                     case 1:
                         WriteLine("Сортировка первого массива");
-                        first = MergeSort.Sort(first, first[0], first[first.Length - 1], out n, out f);
+                        first = MergeSort.Sort(first, 0, first.Length - 1, out n, out f);
                         WriteLine(string.Join(" ", first));
                         WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
                         WriteLine("Сортировка второго массива");
-                        MergeSort.Sort(second, second[0], second[second.Length - 1], out n, out f);
+                        second = MergeSort.Sort(second, 0, second.Length - 1, out n, out f);
                         WriteLine(string.Join(" ", second));
                         WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
                         WriteLine("Сортировка третьего массива");
-                        MergeSort.Sort(third, third[0], third[third.Length - 1], out n, out f);
+                        third = MergeSort.Sort(third, 0, third.Length - 1, out n, out f);
                         WriteLine(string.Join(" ", third));
                         WriteLine("Количество пересылок: {0}\nКоличество сравнений: {1}", n, f);
                         break;
