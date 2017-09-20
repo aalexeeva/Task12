@@ -5,7 +5,7 @@ namespace Task12
 {
     class Program
     {
-        public static int Input(bool status) // ввод числа N
+        public static int Input(int status) // ввод числа N
         {
             var number = 0; // переменная для числа
             bool ok; // показатель корректности ввода
@@ -14,8 +14,9 @@ namespace Task12
                 try
                 {
                     number = Convert.ToInt32(ReadLine());
-                    if (status)
+                    if (status == 1)
                         ok = number > 0 && number < 4;
+                    else if (status == 2) ok = number > 0;
                     else ok = true;
                 }
                 catch (FormatException)
@@ -69,7 +70,7 @@ namespace Task12
             WriteLine("2. Сортировка подсчетом");
             WriteLine("3. Начать заново");
             WriteLine("4. Выход");
-            return Input(true);
+            return Input(1);
         }
 
         static void Main(string[] args)
@@ -78,32 +79,32 @@ namespace Task12
             do
             {
                 WriteLine("Введите размер первого (упорядоченного по возрастанию) массива:");
-                var length = Input(false);
+                var length = Input(2);
                 var first = new int[length];
                 for (var i = 0; i < length; i++)
                 {
                     WriteLine("Введите {0} элемент массива", i + 1);
                     if (i == 0)
-                        first[i] = Input(false);
+                        first[i] = Input(3);
                     else first[i] = IncInput(true, first[i - 1]);
                 }
                 WriteLine("Введите размер второго (упорядоченного по убыванию) массива:");
-                length = Input(false);
+                length = Input(2);
                 var second = new int[length];
                 for (var i = 0; i < length; i++)
                 {
                     WriteLine("Введите {0} элемент массива", i + 1);
                     if (i == 0)
-                        second[i] = Input(false);
+                        second[i] = Input(3);
                     else second[i] = IncInput(false, second[i - 1]);
                 }
                 WriteLine("Введите размер третьего (неупорядоченного) массива:");
-                length = Input(false);
+                length = Input(2);
                 var third = new int[length];
                 for (var i = 0; i < length; i++)
                 {
                     WriteLine("Введите {0} элемент массива", i + 1);
-                    third[i] = Input(false);
+                    third[i] = Input(3);
                 }
                 int n, f; // переменные для пересылок и сравнений
                 bool ok = false;
