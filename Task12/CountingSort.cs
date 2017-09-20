@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Task12
+﻿namespace Task12
 {
-    class CountingSort
+    class Counting
     {
         public static int[] Sort(int[] arr, int max, int min)
         {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
-
-namespace Task12
+﻿namespace Task12
 {
-    public class MergeSort
+    public class Merge
     {
         public static int[] Sort(int[] arr, int beg, int end, out int n, out int f) // сортировка слиянием 
         {
