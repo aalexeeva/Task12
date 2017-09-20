@@ -16,7 +16,11 @@ namespace Task12
                     number = Convert.ToInt32(ReadLine());
                     if (status == 1)
                         ok = number > 0 && number < 4;
-                    else if (status == 2) ok = number > 0;
+                    else if (status == 2)
+                    {
+                        ok = number > 0;
+                        if (ok == false) WriteLine("Число должно быть больше 0, повторите ввод ");
+                    }
                     else ok = true;
                 }
                 catch (FormatException)
