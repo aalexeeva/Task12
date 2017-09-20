@@ -121,9 +121,7 @@ namespace Task12
                     WriteLine("Введите {0} элемент массива", i + 1);
                     third[i] = Input(false);
                 }
-
                 int n, f; // переменные для пересылок и сравнений
-
                 bool ok = false;
                 do
                 {
